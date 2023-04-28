@@ -1,0 +1,43 @@
+<div class="g--grid-container chat-display">
+  <div class="g--col-12 chat-display-container">
+    <div class="g--padded">
+      <div *ngFor="let m of messages" class="g--grid-container message-rows">
+        <div class="g--col-12">
+          <div [ngClass]="{
+            'g--padded': true,
+            'recipient-message': m.clientId !== clientId,
+            'client-message': m.clientId === clientId,
+            'sending': !m.sent
+          }">
+            {{ m.message }}
+          </div>
+        </div>
+        <div class="g--col-12">
+          <div [ngClass]="{
+            'msg-name': true,
+            'recipient-name': m.clientId !== clientId,
+            'client-name': m.clientId === clientId,
+            'sending': !m.sent
+          }">
+            {{ (m.clientId !== clientId) ? m.clientName : (!m.sent ? "Sending..." : m.clientName) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="formGroup" class="g--col-12 g--grid-container" (submit)="onFormSubmit($event)">
+    <div class="g--col-10">
+      <input class="g--width-100 msg-input" type="text" id="messageval" name="messageval" formControlName="messageval"
+        placeholder="Message...">
+    </div>
+    <div class="g--col-2">
+      <input [disabled]="!formGroup.valid" [ngClass]="{ 'send-btn': true, 'g--disabled': !formGroup.valid }"
+        type="submit" value="Submit">
+    </div>
+  </form>
+  <div class="g--col-12">
+    <span *ngIf="!formGroup.valid && formGroup.dirty && formGroup.touched" class="error-text"><i>Please enter a valid
+        message between 1 and 256
+        characters.</i></span>
+  </div>
+</div>

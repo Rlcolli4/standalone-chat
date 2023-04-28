@@ -1,0 +1,63 @@
+.chat-display-container {
+  border: 2px rgba(220, 220, 220, 0.7) solid;
+  border-radius: 5px;
+}
+
+.chat-display {
+  grid-template-rows: 500px 32px 1fr;
+  width: 420px;
+}
+
+.msg-input {
+  height: 26px;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 2px rgba(220, 220, 220, 0.7) solid;
+}
+
+input:focus {
+  outline: none;
+}
+
+.send-btn {
+  background-color: #1976d2;
+  border: 1px solid #1976d2;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  height: 32px;
+}
+
+.error-text {
+  color: red;
+}
+
+.recipient-message {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+.client-message {
+  background-color: #1976d2;
+  color: white;
+  border-radius: 5px;
+  text-align: end;
+}
+
+.client-name {
+  text-align: end;
+}
+
+.sending {
+  opacity: 0.3;
+}
+
+.message-rows {
+  grid-row-gap: 0px;
+}
+
+.msg-name {
+  opacity: 0.7;
+}
